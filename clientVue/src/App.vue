@@ -1,5 +1,6 @@
 <script>
 
+
 export default {
   beforeCreate() {
     console.log('jej')
@@ -8,7 +9,7 @@ export default {
 </script>
 
 <template>
-
+  <Button>Button</Button>
 </template>
 
 <style scoped>
