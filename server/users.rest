@@ -1,0 +1,11 @@
+###POST register
+POST http://localhost:3000/api/user/register HTTP/1.1
+content-type: application/json
+
+{"name": "trombi", "lastName": "kombi","email": "name@email.pl","password": "password"}
+
+###GET
+GET http://localhost:3000/api/user/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTcwOTY1NTksImV4cCI6MTcxNzA5NjU3NH0.LOMXaAdwH1TBL6qssom7PtafZfI6D0k_8tIJwnwklaA HTTP/1.1
+
+###
+GET http://localhost:3000/api/user/ HTTP/1.1
