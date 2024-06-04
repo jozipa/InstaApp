@@ -9,7 +9,7 @@ export default {
 </script>
 
 <template>
-  <Button>Button</Button>
+  <RouterView />
 </template>
 
 <style scoped>
