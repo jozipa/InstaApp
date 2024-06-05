@@ -3,6 +3,7 @@ import imageRouter from "./app/imageRouter.js";
 import tagsRouter from "./app/tagsrouter.js";
 import filtersRouter from "./app/filtersRouter.js";
 import usersRouter from "./app/userRouter.js";
+import userController from "./app/userController.js";
 import "dotenv/config";
 
 createServer(async (req, res) => {
@@ -18,7 +19,13 @@ createServer(async (req, res) => {
   }
   //images
   if (req.url.search("/api/photos") != -1) {
-    await imageRouter(req, res);
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+      let token = req.headers.authorization.split(" ")[1]
+      let check = userController.verifyToken(token)
+      if (check.verified) {
+        await imageRouter(req, res);
+      }
+    }
   }
 
   //tags

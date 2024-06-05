@@ -40,17 +40,20 @@ Uwaga: link jest ważny przez godzinę`,
     let user = usersArray.find((element) => element.email == data.email);
     let info = {
       info: "wrong email or unconfirmed user",
+      type: 'error'
     };
     if (user != undefined && user.confirmed != false) {
       let validatePass = await userController.decryptPass(data.password, user.password);
       let token = await userController.createToken(data)
       if (validatePass) {
-        info.info = "logged succesfully"
+        info = {
+          info: "logged succesfully",
+          type: 'success',
+          token: token,
+        };
       }
       else { info.info = "wrong password" }
     }
-
-
     return new Promise((resolve, reject) => {
       resolve(info);
     });;
