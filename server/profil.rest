@@ -1,0 +1,17 @@
+### GET - danych do wyswietlenia na profilu
+GET http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTc1MDksImV4cCI6MTcxNzYxODQwOX0.79QlyJIvPOxHp9bQqDOrRpWGTHHKDchfYqzPcvq1GtQ
+### PATCH danych na profilu usera
+PATCH http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTc1MDksImV4cCI6MTcxNzYxODQwOX0.79QlyJIvPOxHp9bQqDOrRpWGTHHKDchfYqzPcvq1GtQ
+
+{"name": "srosszin", "lastmame": "Zbazin"}
+
+### GET - Wylogowanie
+GET http://localhost:3000/api/logout HTTP/1.1
+authorization: Bearer LKFHIUFHosajfpshjfgopshfdpsjfpsjpfdspjfjo
+###POST Wysłanie zdjecia profilowego
+POST http://localhost:3000/api/profile HTTP/1.1
+authorization: Bearer LKFHIUFHosajfpshjfgopshfdpsjfpsjpfdspjfjo
+content-type: application/json
+

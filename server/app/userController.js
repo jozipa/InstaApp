@@ -3,6 +3,10 @@ const { hash, compare } = bcryptjs;
 import { usersArray, User } from "./model.js";
 import jsonwebtoken from 'jsonwebtoken';
 const { sign, verify } = jsonwebtoken;
+import { jwtDecode } from "jwt-decode";
+
+
+
 
 
 let userController = {
@@ -85,7 +89,7 @@ Uwaga: link jest ważny przez godzinę`,
     return new Promise((resolve, reject) => {
       let token = sign(
         {
-          email: data.gmail,
+          email: data.email,
           anyOtherData: "123"
         },
         process.env.VERY_SECRET_KEY, // key powinien być zapisany w .env
@@ -110,6 +114,46 @@ Uwaga: link jest ważny przez godzinę`,
   },
   getUsers: () => {
     return usersArray
+  },
+  userProfileInfo: async (data) => {
+    let info = {
+      info: "you are not logged in",
+      type: 'error'
+    };
+    if (data.verified) {
+      let email = data.message.email
+      let userData = usersArray.find((element) => element.email == email)
+      if (userData != undefined) {
+        info = {
+          info: {
+            name: userData.name,
+            lastname: userData.lastname,
+            email: userData.email,
+          },
+          type: 'success'
+        };
+      }
+    }
+    return new Promise((resolve, reject) => {
+      resolve(info)
+    })
+  },
+  updateUserData: (data, token) => {
+    let name = usersArray.find((element) => element.name == data.name);
+    let userData = usersArray.find((element) => element.email == token.message.email);
+    let info = {
+      info: "this name already exists",
+      type: 'error'
+    };
+    if (name == undefined) {
+      userData.name = data.name;
+      userData.lastname = data.lastname;
+      info = {
+        info: "data updated successfully",
+        type: 'success',
+      };
+    }
+    return info
   }
 };
 

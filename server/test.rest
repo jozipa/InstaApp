@@ -1,13 +1,13 @@
 
 ### GET - pobierz wszystkie dane
 GET http://localhost:3000/api/photos HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MDA0MDAsImV4cCI6MTcxNzYwMTMwMH0.d4pMxHVP7gV3_R2sAQUCfCAXZlkPbji1OoZhxSbGaOs
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTMyMjAsImV4cCI6MTcxNzYxNDEyMH0.WoUpBgyqBB0TfLUn7tIhd-uxZv36tL4xa66YTAEeeUU
 ### GET - pobierz konkretne zdjecie
 GET http://localhost:3000/api/photos/1717094884612 HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MDA0MDAsImV4cCI6MTcxNzYwMTMwMH0.d4pMxHVP7gV3_R2sAQUCfCAXZlkPbji1OoZhxSbGaOs
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTMyMjAsImV4cCI6MTcxNzYxNDEyMH0.WoUpBgyqBB0TfLUn7tIhd-uxZv36tL4xa66YTAEeeUU
 ###
 DELETE http://localhost:3000/api/photos/1111111111 HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MDA0MDAsImV4cCI6MTcxNzYwMTMwMH0.d4pMxHVP7gV3_R2sAQUCfCAXZlkPbji1OoZhxSbGaOs
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTMyMjAsImV4cCI6MTcxNzYxNDEyMH0.WoUpBgyqBB0TfLUn7tIhd-uxZv36tL4xa66YTAEeeUU
 ######
 POST http://localhost:3000/api/photos HTTP/1.1
 Content-Type: multipart/form-data; boundary=----FormBoundary1234
