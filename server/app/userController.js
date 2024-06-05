@@ -36,6 +36,31 @@ Uwaga: link jest ważny przez godzinę`,
       resolve(info);
     });
   },
+  loginUser: async (data) => {
+    let user = usersArray.find((element) => element.email == data.email);
+    let info = {
+      info: "wrong email or unconfirmed user",
+    };
+    if (user != undefined && user.confirmed != false) {
+      let validatePass = await userController.decryptPass(data.password, user.password);
+      let token = await userController.createToken(data)
+      if (validatePass) {
+        info.info = "logged succesfully"
+      }
+      else { info.info = "wrong password" }
+    }
+
+
+    return new Promise((resolve, reject) => {
+      resolve(info);
+    });;
+  },
+  decryptPass: async (userpass, encrypted) => {
+    let decrypted = await compare(userpass, encrypted)
+    return new Promise((resolve, reject) => {
+      resolve(decrypted);
+    });
+  },
   encryptPass: async (password) => {
     let encryptedPassword = await hash(password, 10);
     return new Promise((resolve, reject) => {
@@ -62,7 +87,7 @@ Uwaga: link jest ważny przez godzinę`,
         },
         process.env.VERY_SECRET_KEY, // key powinien być zapisany w .env
         {
-          expiresIn: "15s" // "1m", "1d", "24h"
+          expiresIn: "15m" // "1m", "1d", "24h"
         }
       );
       resolve(token)
