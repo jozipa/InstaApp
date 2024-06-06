@@ -1,9 +1,10 @@
 <script>
 export default {
-  created() {
-    console.log('login');
-  },
-  
+    created() {
+        console.log('login');
+        this.$store.dispatch("FETCH_PHOTOS");
+    },
+
 };
 </script>
 
@@ -12,7 +13,8 @@ export default {
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>
-            <a class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!</a>
+            <RouterLink to="/register" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!
+            </RouterLink>
         </div>
         <div>
             <label for="email1" class="block text-900 font-medium mb-2">Email</label>
@@ -36,4 +38,4 @@ export default {
 
 <style>
 
-</style>./LoginView.vue
+</style>

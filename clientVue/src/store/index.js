@@ -1,8 +1,10 @@
 import { createStore } from 'vuex'
-
+import photos from '@/store/photos.js'
+import register from '@/store/register.js'
 
 const modules = {
-    aa: 1
+    photos,
+    register
     // kolejne moduły
 
 }

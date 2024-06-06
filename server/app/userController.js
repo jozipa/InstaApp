@@ -14,6 +14,7 @@ let userController = {
     let validated = await userController.validateRegister(data);
     let info = {
       info: "user or email already exists",
+      type: "error"
     };
     if (validated) {
       let encryptedPass = await userController.encryptPass(data.password);
@@ -34,6 +35,7 @@ w celu potwierdzenia konta
 Uwaga: link jest ważny przez godzinę`,
         userId: userObject.id,
         userArr: usersArray,
+        type: "success"
       };
     }
     return new Promise((resolve, reject) => {

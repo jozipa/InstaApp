@@ -1,25 +1,38 @@
-import axios from "axios"
+import axios from "axios";
 
 const get = async (url) => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(async () => {
+      try {
+        const response = await axios.get(url);
+        console.log("axios", response.data);
+        resolve(response.data);
+      } catch (err) {
+        reject(err);
+      }
+    }, 1000);
+  });
+};
 
-    return new Promise(async (resolve, reject) => {
+const post = async (url, object) => {
 
-        setTimeout(async () => {
-            try {
-                const response = await axios.get(url)
-                console.log("axios", response.data);
-                resolve(response.data)
-            } catch (err) {
-                reject(err)
-            }
+  return new Promise(async (resolve, reject) => {
 
-        }, 1000);
+    setTimeout(async () => {
+      try {
+        const response = await axios.post(url, object)
+        console.log("axios", response.data);
+        resolve(response.data)
+      } catch (err) {
+        reject(err)
+      }
 
-    })
+    }, 1000);
+  })
 }
 
-const getPhotos = () => get("http://localhost:3000/api/photos")
+const getPhotos = () => get("http://localhost:3000/api/photos");
+const deletePhotos = (id) => get(`http://localhost:3000/api/photos/${id}`);
+const registerUser = (object) => post(`http://localhost:3000/api/user/register`, object)
 
-export {
-    getPhotos,
-}
+export { getPhotos, deletePhotos, registerUser };
