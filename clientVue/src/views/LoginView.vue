@@ -1,10 +1,34 @@
 <script>
-export default {
-    created() {
-        console.log('login');
-        this.$store.dispatch("FETCH_PHOTOS");
-    },
+import Message from 'primevue/message';
 
+export default {
+    data() {
+        return {
+            email: '',
+            password1: "",
+            info: '',
+            show: false,
+            type: 'error'
+        }
+    },
+    methods: {
+        onSubmit() {
+            let user = {
+                email: this.email,
+                password: this.password1
+            }
+            this.$store.dispatch("POST_LOGIN_USER", user) 
+        },
+
+    },
+    computed: {
+        disabled() {
+            let disable = true;
+            if (this.email.length > 2 && this.password1.length > 2) disable = false
+            return disable;
+        },
+        
+    },
 };
 </script>
 
@@ -17,11 +41,11 @@ export default {
             </RouterLink>
         </div>
         <div>
-            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-            <InputText id="email1" type="text" class="w-full mb-3" />
+            <label for="email" class="block text-900 font-medium mb-2">Email</label>
+            <InputText v-model="email" id="email" type="text" class="w-full mb-3" />
 
-            <label for="password1" class="block text-900 font-medium mb-2">Password</label>
-            <InputText id="password1" type="password" class="w-full mb-3" />
+            <label for="password" class="block text-900 font-medium mb-2">Password</label>
+            <InputText v-model="password1" id="password" type="password" class="w-full mb-3" />
 
             <div class="flex align-items-center justify-content-between mb-6">
                 <div class="flex align-items-center">
@@ -31,7 +55,7 @@ export default {
                 <a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
             </div>
 
-            <Button label="Sign In" icon="pi pi-user" class="w-full"></Button>
+            <Button @click="onSubmit" :disabled="disabled" label="Sign In" icon="pi pi-user" class="w-full"></Button>
         </div>
     </div>
 </template>

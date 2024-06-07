@@ -66,8 +66,8 @@ export default {
         <div>
             <Message :closable="false" v-bind:severity="type" v-show="show">{{ info }}</Message>
 
-            <label for="email1" class="block text-900 font-medium mb-2">Email</label>
-            <InputText v-model="email" id="email1" type="text" class="w-full mb-3" />
+            <label for="email" class="block text-900 font-medium mb-2">Email</label>
+            <InputText v-model="email" id="email" type="text" class="w-full mb-3" />
 
             <label for="name" class="block text-900 font-medium mb-2">Name</label>
             <InputText v-model="name" id="name" type="text" class="w-full mb-3" />
