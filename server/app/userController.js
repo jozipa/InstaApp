@@ -29,13 +29,11 @@ let userController = {
       );
       usersArray.push(userObject);
       info = {
-        info: `skopiuj poniższy link do przeglądarki
-    http://localhost:3000/api/user/confirm/${token}
-w celu potwierdzenia konta
-Uwaga: link jest ważny przez godzinę`,
+        info: `Kliknij w link aby potwierdzić konto`,
         userId: userObject.id,
         userArr: usersArray,
-        type: "success"
+        type: "success",
+        link: `http://localhost:3000/api/user/confirm/${token}`
       };
     }
     return new Promise((resolve, reject) => {

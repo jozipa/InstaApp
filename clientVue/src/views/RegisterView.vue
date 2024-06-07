@@ -1,10 +1,9 @@
 <script>
 import Message from 'primevue/message';
 
-
 export default {
     data() {
-        return{
+        return {
             name: '',
             lastname: '',
             password1: "",
@@ -16,26 +15,25 @@ export default {
         }
     },
     methods: {
-            onSubmit() {
-                if(this.password1 == this.password2){
-                    let user = {
-                        name: this.name, 
-                        lastName: this.lastname,
-                        email: this.email,
-                        password: this.password1
-                    }
-                    this.$store.dispatch("POST_NEW_USER", user)
-                } else {
-                    this.info = "The passwords do not match.";
-                    this.type = 'error';
-                    this.show = true;
-                    setTimeout(() => {
-                        this.show = false;
-                    }, 4000);
+        onSubmit() {
+            if (this.password1 == this.password2) {
+                let user = {
+                    name: this.name,
+                    lastName: this.lastname,
+                    email: this.email,
+                    password: this.password1
                 }
+                this.$store.dispatch("POST_NEW_USER", user)
+            } else {
+                this.info = "The passwords do not match.";
+                this.type = 'error';
+                this.show = true;
+                setTimeout(() => {
+                    this.show = false;
+                }, 4000);
             }
-                
-            
+        },
+
     },
     computed: {
         disabled() {
@@ -51,9 +49,13 @@ export default {
 </script>
 
 <template>
-    <Message id="message13" :closable="false" v-show="getConfirmation.type" position="top-center" v-bind:severity="getConfirmation.type">
-        {{ getConfirmation.info }}
-    </Message>
+
+    <a v-bind:href="getConfirmation.link" target="_blank">
+        <Message id="message13" :closable="false" v-show="getConfirmation.type" position="top-center"
+            v-bind:severity="getConfirmation.type">
+            {{ getConfirmation.info }}
+        </Message>
+    </a>
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Register</div>
@@ -62,7 +64,7 @@ export default {
             </RouterLink>
         </div>
         <div>
-            <Message :closable="false" v-bind:severity="type" v-show="show">{{info}}</Message>
+            <Message :closable="false" v-bind:severity="type" v-show="show">{{ info }}</Message>
 
             <label for="email1" class="block text-900 font-medium mb-2">Email</label>
             <InputText v-model="email" id="email1" type="text" class="w-full mb-3" />
@@ -94,7 +96,7 @@ export default {
 </template>
 
 <style>
-#message13{
+#message13 {
     text-wrap: wrap;
 }
 </style>

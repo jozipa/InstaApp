@@ -32,7 +32,8 @@ const post = async (url, object) => {
 }
 
 const getPhotos = () => get("http://localhost:3000/api/photos");
+const confirmUser = (id) => get(`http://localhost:3000/api/user/confirm/${id}`);
 const deletePhotos = (id) => get(`http://localhost:3000/api/photos/${id}`);
 const registerUser = (object) => post(`http://localhost:3000/api/user/register`, object)
 
-export { getPhotos, deletePhotos, registerUser };
+export { getPhotos, deletePhotos, registerUser, confirmUser };
