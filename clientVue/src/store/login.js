@@ -47,7 +47,7 @@ const login = {
             // odbiera dane z serwera (poprzez axios) i ustawia listę promocji w store
             // w razie błędu ustawia error w store (catch)
             // niezależnie od błędu lub jego braku (finally), kończy loading
-
+            
             loginUser(user)
                 .then((data) => {
                     commit("SET_LOGIN_LIST", data);

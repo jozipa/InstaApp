@@ -1,7 +1,7 @@
 
 ### GET - pobierz wszystkie dane
 GET http://localhost:3000/api/photos HTTP/1.1
-authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTMyMjAsImV4cCI6MTcxNzYxNDEyMH0.WoUpBgyqBB0TfLUn7tIhd-uxZv36tL4xa66YTAEeeUU
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbWVAZW1haWwucGwiLCJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc4NDg3MDEsImV4cCI6MTcxNzg0OTYwMX0.PzRwEbHPNaRLXv2_Eg-GzxuHkHiKeNyBtYy4gQBvX_E
 ### GET - pobierz konkretne zdjecie
 GET http://localhost:3000/api/photos/1717094884612 HTTP/1.1
 authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbnlPdGhlckRhdGEiOiIxMjMiLCJpYXQiOjE3MTc2MTMyMjAsImV4cCI6MTcxNzYxNDEyMH0.WoUpBgyqBB0TfLUn7tIhd-uxZv36tL4xa66YTAEeeUU

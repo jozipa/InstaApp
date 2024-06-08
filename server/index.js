@@ -20,13 +20,14 @@ createServer(async (req, res) => {
   }
   //images
   if (req.url.search("/api/photos") != -1) {
-    // if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-    //   let token = req.headers.authorization.split(" ")[1]
-    //   let check = userController.verifyToken(token)
-    //   if (check.verified) {
-    //   }
-    // }
-    await imageRouter(req, res);
+    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+      let token = req.headers.authorization.split(" ")[1]
+      let check = userController.verifyToken(token)
+      if (check.verified) {
+        await imageRouter(req, res);
+      }
+    }
+
   }
 
   //tags

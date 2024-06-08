@@ -44,16 +44,18 @@ let userController = {
     let user = usersArray.find((element) => element.email == data.email);
     let info = {
       info: "wrong email or unconfirmed user",
-      type: 'error'
+      type: 'error',
     };
     if (user != undefined && user.confirmed != false) {
       let validatePass = await userController.decryptPass(data.password, user.password);
-      let token = await userController.createToken(data)
+      let userData = usersArray.find((element) => element.email == data.email);
+      let token = await userController.createToken(userData)
       if (validatePass) {
         info = {
-          info: "logged succesfully",
+          info: `${userData.name} wellcome on the board`,
           type: 'success',
           token: token,
+          userName: userData.name
         };
       }
       else { info.info = "wrong password" }
@@ -90,6 +92,7 @@ let userController = {
       let token = sign(
         {
           email: data.email,
+          name: data.name,
           anyOtherData: "123"
         },
         process.env.VERY_SECRET_KEY, // key powinien być zapisany w .env

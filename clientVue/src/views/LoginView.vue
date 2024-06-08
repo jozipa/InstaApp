@@ -27,6 +27,15 @@ export default {
             if (this.email.length > 2 && this.password1.length > 2) disable = false
             return disable;
         },
+        getLoginInfo() {
+            let loginList = this.$store.getters.GET_LOGIN_LIST
+            if(loginList.type == 'success'){
+                setTimeout(() => {
+                    this.$router.push('/')
+                }, 2000);
+            }
+            return loginList;
+        }
         
     },
 };
@@ -34,6 +43,10 @@ export default {
 
 <template>
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
+        <Message :closable="false" v-show="getLoginInfo.type" position="top-center"
+            v-bind:severity="getLoginInfo.type">
+            {{ getLoginInfo.info }}
+        </Message>
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>

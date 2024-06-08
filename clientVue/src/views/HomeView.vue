@@ -1,31 +1,39 @@
 <script>
 import Menubar from 'primevue/menubar';
-
+import AppLoader from '@/components/AppLoader.vue'
 export default{
     data(){
-        return{
-            
-        }
+        return {
+            file: null,
+            album: "",
+        };
     },
     created() {
-        console.log('home');
-        this.$store.dispatch("FETCH_PHOTOS");
+        let user = this.$store.getters.GET_LOGIN_LIST;
+        this.$store.dispatch("FETCH_PHOTOS", user);
+        this.album = user.userName
     },
     computed: {
         photosList() {
-            console.log('phtoslist',this.$store.getters.GET_PHOTOS_LIST);
             return this.$store.getters.GET_PHOTOS_LIST;
+        },
+        photosLoading() {
+            return this.$store.getters.GET_PHOTOS_LOADING;
         }
     },
     methods: {
-        
-    }
+        upload(){
+            console.log(this.album);
+        }
+    },
+    components: {AppLoader}
 }
 </script>
 
 <template>
+    <AppLoader v-show="photosLoading"></AppLoader>
     <RouterLink to="/login"><Button>Login</Button></RouterLink>
-    <FileUpload class="mt-5 mb-5" accept="image/*" />
+    <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" customUpload @uploader="upload" />
     <div v-for="photo in photosList">
         <p>photo {id: {{ photo.id }} }</p>
     </div>
