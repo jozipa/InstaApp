@@ -55,7 +55,8 @@ let userController = {
           info: `welcome on the board,  ${userData.name}`,
           type: 'success',
           token: token,
-          userName: userData.name
+          userName: userData.name,
+          userInfo: userData,
         };
       }
       else { info.info = "wrong password" }
