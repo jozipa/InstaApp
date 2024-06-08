@@ -1,20 +1,20 @@
 // inne potrzebne funkcje
 
 let photosArray = [
-  {
-    id: 1111111111,
-    album: "album",
-    originalName: "fileInfo.files.name",
-    url: "fileInfo.url",
-    lastChange: "original",
-    history: [
-      {
-        status: "original",
-        lastModifiedDate: "fileInfo.files.lastModifiedDate",
-      },
-    ],
-    tags: [],
-  },
+  // {
+  //   id: 1111111111,
+  //   album: "album",
+  //   originalName: "fileInfo.files.name",
+  //   url: "fileInfo.url",
+  //   lastChange: "original",
+  //   history: [
+  //     {
+  //       status: "original",
+  //       lastModifiedDate: "fileInfo.files.lastModifiedDate",
+  //     },
+  //   ],
+  //   tags: [],
+  // },
 ];
 let tagsArray = [
   "#love",

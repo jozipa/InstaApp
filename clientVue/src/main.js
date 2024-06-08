@@ -1,7 +1,7 @@
 import "./assets/main.css";
 
 import "primeflex/primeflex.css";
-import "primevue/resources/themes/md-light-deeppurple/theme.css";
+import "primevue/resources/themes/md-light-indigo/theme.css";
 
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -19,7 +19,10 @@ import FileUpload from "primevue/fileupload";
 import Message from 'primevue/message';
 import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
-
+import Toolbar from 'primevue/toolbar';
+import Card from "primevue/card";
+import Avatar from "primevue/avatar";
+import Image from "primevue/image";
 
 const app = createApp(App);
 
@@ -30,6 +33,11 @@ app.component("Chip", Chip);
 app.component("Menubar", Menubar);
 app.component("FileUpload", FileUpload);
 app.component("Message", Message);
+app.component("Toolbar", Toolbar)
+app.component("Card", Card)
+app.component("Avatar", Avatar)
+app.component("Image", Image)
+
 
 
 

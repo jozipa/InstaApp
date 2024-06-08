@@ -52,7 +52,7 @@ let userController = {
       let token = await userController.createToken(userData)
       if (validatePass) {
         info = {
-          info: `${userData.name} wellcome on the board`,
+          info: `welcome on the board,  ${userData.name}`,
           type: 'success',
           token: token,
           userName: userData.name

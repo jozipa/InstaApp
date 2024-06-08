@@ -26,7 +26,7 @@ createServer(async (req, res) => {
       if (check.verified) {
         await imageRouter(req, res);
       }
-    }
+      }
 
   }
 

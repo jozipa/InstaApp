@@ -43,16 +43,16 @@ export default {
 
 <template>
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
-        <Message :closable="false" v-show="getLoginInfo.type" position="top-center"
-            v-bind:severity="getLoginInfo.type">
-            {{ getLoginInfo.info }}
-        </Message>
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
             <span class="text-600 font-medium line-height-3">Don't have an account?</span>
             <RouterLink to="/register" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">Create today!
             </RouterLink>
         </div>
+        <Message :closable="false" v-show="getLoginInfo.type" position="top-center"
+            v-bind:severity="getLoginInfo.type">
+            {{ getLoginInfo.info }}
+        </Message>
         <div>
             <label for="email" class="block text-900 font-medium mb-2">Email</label>
             <InputText v-model="email" id="email" type="text" class="w-full mb-3" />

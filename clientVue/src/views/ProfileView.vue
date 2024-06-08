@@ -44,38 +44,14 @@ export default{
 <template>
     <Header></Header>
     <AppLoader v-show="photosLoading"></AppLoader>
-    <div id="main">
-            <Card style="width: 25rem; overflow: hidden" v-for="photo in photosList" class="m-3">
-        <template #header>
-            <div class="flex align-items-center">
-                <Avatar class="m-3" image="https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png" shape="circle" />
-                <div>{{ user.userName }}</div>
-            </div>
-        </template>
-        <template #content>
-            <div class="card flex justify-content-center">
-                <Image src="https://primefaces.org/cdn/primevue/images/galleria/galleria10.jpg" alt="Image" width="100%" preview />
-            </div>
-            <p class="mt-3">
-                {{ photo.id }} 
-            </p>
-        </template>
-        <template #footer>
-            
-        </template>
-    </Card>
-        
-        
+    <FileUpload ref="fileUpload" mode="basic" name="demo[]" url="/api/upload" accept="image/*" customUpload @uploader="upload" @change="handleFileUpload" />
+ <div v-for="photo in photosList"> 
+        <p>photo {id: {{ photo.id }} }</p>
     </div>
     
 </template>
 
 <style>
-.main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 
 </style>
