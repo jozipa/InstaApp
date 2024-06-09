@@ -4,7 +4,6 @@ import register from '@/store/register.js'
 import login from '@/store/login'
 import upload from './postPhoto'
 import profile from './updateProfile'
-import photo from './photoFile'
 
 const modules = {
     photos,
@@ -12,7 +11,6 @@ const modules = {
     login,
     upload,
     profile,
-    photo
     // kolejne moduły
 
 }

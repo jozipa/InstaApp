@@ -31,7 +31,7 @@ const imageRouter = async (request, response) => {
         console.log(photoJson);
         let photo = await fileController.getFile(photoJson);
         response.writeHead(200, {'content-type':'image/jpg'});
-        response.end(JSON.stringify(photo));
+        response.end(photo);
       }
       break;
     case "POST":
