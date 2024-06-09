@@ -33,6 +33,13 @@ const usersRouter = async (request, response) => {
         response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
         response.end(JSON.stringify(info));
       }
+      if(request.url == `/api/user/current`){
+        let userData = await getRequestData(request);
+        console.log('jsonParse', JSON.parse(userData));
+        let info = userController.findUser(JSON.parse(userData));
+        response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
+        response.end(JSON.stringify(info));
+      }
       break;
     case "PATCH":
       break;

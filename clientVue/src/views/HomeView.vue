@@ -2,7 +2,8 @@
 import Menubar from 'primevue/menubar';
 import AppLoader from '@/components/AppLoader.vue'
 import  Header  from '@/components/Header.vue';
-import { Button } from 'ant-design-vue';
+
+
 export default{
     data(){
         return {
@@ -13,11 +14,18 @@ export default{
     },
     created() {
         this.user = this.$store.getters.GET_LOGIN_LIST;
+        if(this.user.token == undefined){
+            this.$router.push('/login')
+            return
+            }
+        
+
         this.$store.dispatch("FETCH_PHOTOS", this.user);
-        this.album = this.user.userName
+        this.album = this.user.album
     },
     computed: {
         photosList() {
+            console.log(this.$store.getters.GET_PHOTOS_LIST);
             return this.$store.getters.GET_PHOTOS_LIST;
         },
         photosLoading() {
@@ -45,26 +53,30 @@ export default{
     <Header></Header>
     <AppLoader v-show="photosLoading"></AppLoader>
     <div id="main">
-            <Card style="width: 25rem; overflow: hidden" v-for="photo in photosList" class="m-3">
-        <template #header>
-            <div class="flex align-items-center">
-                <Avatar class="m-3" image="https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png" shape="circle" />
-                <div>{{ user.userName }}</div>
-            </div>
-        </template>
-        <template #content>
-            <div class="card flex justify-content-center">
-                <Image src="https://primefaces.org/cdn/primevue/images/galleria/galleria10.jpg" alt="Image" width="100%" preview />
-            </div>
-            <p class="mt-3">
-                {{ photo.id }} 
-            </p>
-        </template>
-        <template #footer>
+        <div class="card-center" v-for="photo in photosList">
+            <Card style="width: 50%; overflow: hidden" class="m-3">
+                <template #header>
+                    <div class="flex align-items-center">
+                        <Avatar class="m-3" image="https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png" shape="circle" />
+                        <div>{{ photo.album }}</div>
+                    </div>
+                </template>
+                <template #content>
+                    <div class="card flex justify-content-center">
+                        <Image src="https://primefaces.org/cdn/primevue/images/galleria/galleria10.jpg" alt="Image" width="100%" preview />
+                    </div>
+                    <p class="mt-3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quibusdam enim qui consequatur nemo reiciendis vitae itaque. Ex natus numquam praesentium voluptate ad est, debitis iste assumenda ducimus tenetur. Facere. 
+                    </p>
+                </template>
+                <template #footer>
             
         
-        </template>
-    </Card>
+                </template>
+            </Card>
+
+        </div>
+        
         
         
     </div>
@@ -72,11 +84,14 @@ export default{
 </template>
 
 <style>
-.main {
+#main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.card-center{
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
-
 </style>

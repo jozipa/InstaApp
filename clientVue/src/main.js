@@ -1,13 +1,13 @@
-import "./assets/main.css";
 
 import "primeflex/primeflex.css";
-import "primevue/resources/themes/md-light-indigo/theme.css";
+import "primevue/resources/themes/mdc-light-deeppurple/theme.css";
 
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import modules from "@/store/index.js";
 
+import "./assets/main.css";
 
 import PrimeVue from "primevue/config";
 import Button from "primevue/button";
@@ -23,6 +23,7 @@ import Toolbar from 'primevue/toolbar';
 import Card from "primevue/card";
 import Avatar from "primevue/avatar";
 import Image from "primevue/image";
+import Dialog from 'primevue/dialog';
 
 const app = createApp(App);
 
@@ -37,6 +38,7 @@ app.component("Toolbar", Toolbar)
 app.component("Card", Card)
 app.component("Avatar", Avatar)
 app.component("Image", Image)
+app.component("Dialog", Dialog)
 
 
 

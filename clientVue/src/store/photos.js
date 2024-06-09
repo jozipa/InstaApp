@@ -50,7 +50,7 @@ const photos = {
       // niezależnie od błędu lub jego braku (finally), kończy loading
       
       console.log('fetchin', token);
-      getPhotos(token)
+      getPhotos(token.token)
         .then((data) => {
           commit("SET_PHOTOS_LIST", data);
           console.log("done");

@@ -19,15 +19,15 @@ createServer(async (req, res) => {
     return;
   }
   //images
-  if (req.url.search("/api/photos") != -1) {
-    if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
-      let token = req.headers.authorization.split(" ")[1]
-      let check = userController.verifyToken(token)
-      if (check.verified) {
-        await imageRouter(req, res);
-      }
-      }
-
+  if (req.url.search("/api/photos") != -1 || req.url.search("/api/getimage") != -1) {
+    // if (req.headers.authorization && req.headers.authorization.startsWith("Bearer")) {
+    //   let token = req.headers.authorization.split(" ")[1]
+    //   let check = userController.verifyToken(token)
+    //   if (check.verified) {
+    //   }
+    //   }
+      
+      await imageRouter(req, res);
   }
 
   //tags

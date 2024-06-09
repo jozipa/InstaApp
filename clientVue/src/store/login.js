@@ -1,10 +1,11 @@
-import { loginUser } from "@/api";
+import { loginUser, getUser } from "@/api";
 
 const login = {
     //state
     state() {
         return {
             loginInfo: [],
+            currentUser: [],
             loginLoading: false,
             loginError: null,
         };
@@ -12,6 +13,9 @@ const login = {
 
     //mutations czyli setters
     mutations: {
+        SET_CURRENT_USER(state, newlogin) {
+            state.currentUser = newlogin;
+        },
         SET_LOGIN_LIST(state, newlogin) {
             state.loginInfo = newlogin;
         },
@@ -25,6 +29,9 @@ const login = {
 
     //getters
     getters: {
+        GET_CURRENT_USER(state, newlogin) {
+            return state.currentUser;
+        },
         GET_LOGIN_LIST(state) {
             return state.loginInfo;
         },
@@ -60,7 +67,28 @@ const login = {
                     commit("SET_LOGIN_LOADING", false);
                 });
         },
+        GET_CURRENT_USER({ state, commit }, data) {
+            // najpierw ustawiamy stan ładowania na true (czyli dane się ładują, teraz mógłby się pokazywać loader)
+            // potem wywołujemy funkcję z api, która
+            // odbiera dane z serwera (poprzez axios) i ustawia listę promocji w store
+            // w razie błędu ustawia error w store (catch)
+            // niezależnie od błędu lub jego braku (finally), kończy loading
+            
+            getUser(data.email, data.token)
+                .then((data) => {
+                    commit("SET_CURRENT_USER", data);
+                    console.log("done", data);
+                })
+                .catch((error) => {
+                    commit("SET_LOGIN_ERROR", "server error!!!");
+                })
+                .finally(() => {
+                    commit("SET_LOGIN_LOADING", false);
+                });
+        },
+        
     },
+    
 };
 
 export default login;

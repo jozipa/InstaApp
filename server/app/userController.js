@@ -25,7 +25,8 @@ let userController = {
         data.lastName,
         data.email,
         false,
-        encryptedPass
+        encryptedPass,
+        data.name,
       );
       usersArray.push(userObject);
       info = {
@@ -39,6 +40,11 @@ let userController = {
     return new Promise((resolve, reject) => {
       resolve(info);
     });
+  },
+  findUser: (data) => {
+    let user = usersArray.find((element) => element.email == data)
+    console.log(user);
+    return user
   },
   loginUser: async (data) => {
     let user = usersArray.find((element) => element.email == data.email);

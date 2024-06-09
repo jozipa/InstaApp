@@ -24,6 +24,14 @@ const imageRouter = async (request, response) => {
         response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
         response.end(JSON.stringify(wanted));
       }
+      if (request.url.match(/\/api\/getimage\/([0-9]+)/)) {
+        let url = request.url;
+        let id = url.split("/")[3];
+        let photoJson = jsonController.getOne(id);
+        let photo = await fileController.getTagsFromOne(photoJson);
+        response.writeHead(200, {'content-type':'image/jpg'});
+        response.end(JSON.stringify(photo));
+      }
       break;
     case "POST":
       if (request.url == "/api/photos") {
@@ -45,6 +53,7 @@ const imageRouter = async (request, response) => {
         response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
         response.end(JSON.stringify(wanted));
       }
+      
       break;
   }
 };

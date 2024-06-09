@@ -5,6 +5,11 @@ import fs from "fs"
 const __dirname = path.resolve();
 
 const fileController = {
+  getFile: async (data) => {
+    let url = data.url.split("/")
+    let fileName = url[url.length-1];
+    const imagePath = path.join(__dirname, 'upload', data.album, fileName);
+  },
   addFile: async (req) => {
     let form = formidable({});
     form.keepExtensions = true;
