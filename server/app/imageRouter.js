@@ -28,7 +28,8 @@ const imageRouter = async (request, response) => {
         let url = request.url;
         let id = url.split("/")[3];
         let photoJson = jsonController.getOne(id);
-        let photo = await fileController.getTagsFromOne(photoJson);
+        console.log(photoJson);
+        let photo = await fileController.getFile(photoJson);
         response.writeHead(200, {'content-type':'image/jpg'});
         response.end(JSON.stringify(photo));
       }

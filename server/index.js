@@ -26,7 +26,7 @@ createServer(async (req, res) => {
     //   if (check.verified) {
     //   }
     //   }
-      
+      console.log('rouyer');
       await imageRouter(req, res);
   }
 

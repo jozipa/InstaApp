@@ -2,6 +2,7 @@
 import Menubar from 'primevue/menubar';
 import AppLoader from '@/components/AppLoader.vue'
 import  Header  from '@/components/Header.vue';
+import { Button } from 'ant-design-vue';
 
 
 export default{
@@ -10,6 +11,7 @@ export default{
             file: null,
             album: "",
             user: {},
+            photoId: null,
         };
     },
     created() {
@@ -38,7 +40,6 @@ export default{
             fd.append("file", this.file)
             fd.append("album", this.album)
             let data = this.user
-            console.log('upload function:', this.file, this.user.token); // Dodaj to
             this.$store.dispatch("POST_IMAGE_FILE", { file: fd, token: this.user.token }) // Poprawione przekazanie tokena
         },
         handleFileUpload() {
@@ -63,7 +64,7 @@ export default{
                 </template>
                 <template #content>
                     <div class="card flex justify-content-center">
-                        <Image src="https://primefaces.org/cdn/primevue/images/galleria/galleria10.jpg" alt="Image" width="100%" preview />
+                        <Image v-bind:src="'http://localhost:3000/api/getimage/' + photo.id" alt="Image" width="100%" preview />
                     </div>
                     <p class="mt-3">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quibusdam enim qui consequatur nemo reiciendis vitae itaque. Ex natus numquam praesentium voluptate ad est, debitis iste assumenda ducimus tenetur. Facere. 

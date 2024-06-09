@@ -4,9 +4,26 @@ const get = async (url) => {
   return new Promise(async (resolve, reject) => {
     setTimeout(async () => {
       try {
+        console.log('urk',url);
         const response = await axios.get(url);
         console.log("axios", response.data);
         resolve(response.data);
+      } catch (err) {
+        reject(err);
+      }
+    }, 1000);
+  });
+};
+
+const getPhotoFile = async (id) => {
+  return new Promise(async (resolve, reject) => {
+    setTimeout(async () => {
+      try {
+        const response = await axios.get(url, {responseType: 'arraybuffer'});
+        const base64 = Buffer.from(response.data, 'binary').toString('base64');
+        const mimeType = response.headers['content-type'];
+        const imageSrc = `data:${mimeType};base64,${base64}`;
+        resolve(imageSrc);
       } catch (err) {
         reject(err);
       }
@@ -115,6 +132,7 @@ const loginUser = (object) => post(`http://localhost:3000/api/user/login`, objec
 const postFile = (object, token) => file("http://localhost:3000/api/photos", object, token)
 const editProfile = (object, token) => patchToken(`http://localhost:3000/api/profile`, object, token)
 const getUser = (email,token) => postToken("http://localhost:3000/api/user/current", email, token);
+const getPhoto = (id) => getPhotoFile(`http://localhost:3000/api/getimage/${id}`)
 
 
-export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser };
+export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser, getPhoto };
