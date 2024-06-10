@@ -27,6 +27,7 @@ let userController = {
         false,
         encryptedPass,
         data.name,
+        'descripton',
       );
       usersArray.push(userObject);
       info = {
@@ -156,8 +157,12 @@ let userController = {
       type: 'error'
     };
     if (name == undefined) {
-      userData.name = data.name;
-      userData.lastname = data.lastname;
+      if (data.name != "" && data.lastname != "") {
+        userData.name = data.name;
+        userData.lastname = data.lastname;
+      }
+      userData.description = data.description;
+      console.log('dadadadadadadadadadadad', data.description);
       info = {
         info: "data updated successfully",
         type: 'success',

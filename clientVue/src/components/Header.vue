@@ -12,7 +12,7 @@
 
             <template #end>
                 <div class="flex align-items-center gap-2">
-                    <RouterLink to="/login"><Button>Login</Button></RouterLink>
+                    <RouterLink to="/logout"><Button>Logout</Button></RouterLink>
                     <Avatar image="" style="width: 32px; height: 32px" />
                 </div>
             </template>

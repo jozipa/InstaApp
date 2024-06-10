@@ -59,7 +59,7 @@ for (let i = 1; i <= tagsArray.length; i++) {
 }
 
 class User {
-  constructor(id, name, lastname, email, confirmed, password, album) {
+  constructor(id, name, lastname, email, confirmed, password, album, description) {
     this.id = id;
     this.name = name;
     this.lastname = lastname;
@@ -67,6 +67,7 @@ class User {
     this.confirmed = confirmed;
     this.password = password;
     this.album = album;
+    this.description = description
   }
 }
 

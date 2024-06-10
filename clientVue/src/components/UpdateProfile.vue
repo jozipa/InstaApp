@@ -1,4 +1,6 @@
 <script>
+import { descriptionsContext } from 'ant-design-vue/es/descriptions';
+
 export default {
     props: {
         visible: Boolean
@@ -10,6 +12,7 @@ export default {
             user: {},
             name: "",
             lastname: "",
+            descritption: "",
             show: false,
             info: "",
         };
@@ -30,7 +33,8 @@ export default {
         saveChanges() {
             let info = {
                 name: this.name,
-                lastname: this.lastname
+                lastname: this.lastname,
+                description: this.description
             }
             this.$store.dispatch("POST_PROFILE_UPDATE", { info: info, token: this.user.token }) 
             setTimeout(() => {
@@ -83,6 +87,10 @@ export default {
         <div class="flex align-items-center gap-3 mb-2">
             <label for="email" class="font-semibold w-6rem">Lastname</label>
             <InputText v-model="lastname" id="email" class="flex-auto" autocomplete="off" />
+        </div>
+        <div class="flex align-items-center gap-3 mb-2">
+            <label for="email" class="font-semibold w-6rem">Description</label>
+            <InputText v-model="description" id="email" class="flex-auto" autocomplete="off" />
         </div>
         <div class="flex align-items-center gap-3 mb-2">
             <label for="email" class="font-semibold w-6rem">Profile Picture</label>
