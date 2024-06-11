@@ -8,9 +8,9 @@ const fileController = {
   getFile: async (data) => {
     let url = data.url.split("\\")
     let fileName = url[url.length-1];
-    console.log(__dirname, data.album, fileName, "url", url);
+    
     const imagePath = path.join(__dirname, "upload", data.album, fileName);
-    console.log(imagePath);
+    
     return new Promise((resolve) => {
       fs.readFile(imagePath, (err, data) => {
         if (err) {

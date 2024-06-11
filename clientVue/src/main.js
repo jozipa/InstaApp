@@ -17,13 +17,13 @@ import InputText from "primevue/inputtext";
 import Checkbox from "primevue/checkbox";
 import FileUpload from "primevue/fileupload";
 import Message from 'primevue/message';
-import Toast from 'primevue/toast';
 import ToastService from 'primevue/toastservice';
 import Toolbar from 'primevue/toolbar';
 import Card from "primevue/card";
 import Avatar from "primevue/avatar";
 import Image from "primevue/image";
 import Dialog from 'primevue/dialog';
+import MultiSelect from 'primevue/multiselect';
 
 const app = createApp(App);
 
@@ -39,6 +39,7 @@ app.component("Card", Card)
 app.component("Avatar", Avatar)
 app.component("Image", Image)
 app.component("Dialog", Dialog)
+app.component("MultiSelect", MultiSelect)
 
 
 

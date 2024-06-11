@@ -50,12 +50,7 @@ export default {
 
 <template>
 
-    <a v-bind:href="getConfirmation.link" target="_blank">
-        <Message id="message13" :closable="false" v-show="getConfirmation.type" position="top-center"
-            v-bind:severity="getConfirmation.type">
-            {{ getConfirmation.info }}
-        </Message>
-    </a>
+    
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Register</div>
@@ -63,6 +58,12 @@ export default {
             <RouterLink to="/login" class="font-medium no-underline ml-2 text-blue-500 cursor-pointer">login now!
             </RouterLink>
         </div>
+        <a v-bind:href="getConfirmation.link" target="_blank">
+            <Message id="message13" :closable="false" v-show="getConfirmation.type" position="top-center"
+                v-bind:severity="getConfirmation.type">
+                {{ getConfirmation.info }}
+            </Message>
+        </a>
         <div>
             <Message :closable="false" v-bind:severity="type" v-show="show">{{ info }}</Message>
 

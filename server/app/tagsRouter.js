@@ -22,9 +22,7 @@ const tagsRouter = async (request, response) => {
       }
       break;
     case "POST":
-      console.log(12321313);
       if (request.url == "/api/tags") {
-        console.log("okok");
         let newTag = await getRequestData(request);
         let info = tagsController.addNew(newTag);
         response.end(JSON.stringify(info.info));

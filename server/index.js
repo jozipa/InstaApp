@@ -1,7 +1,6 @@
 import { createServer } from "http";
 import imageRouter from "./app/imageRouter.js";
 import tagsRouter from "./app/tagsrouter.js";
-import filtersRouter from "./app/filtersRouter.js";
 import usersRouter from "./app/userRouter.js";
 import usersRouter2 from "./app/userRouter2.js";
 import userController from "./app/userController.js";
@@ -32,11 +31,6 @@ createServer(async (req, res) => {
   //tags
   else if (req.url.search("/api/tags") != -1) {
     await tagsRouter(req, res);
-  }
-
-  //filters
-  else if (req.url.search("/api/filters") != -1) {
-    await filtersRouter(req, res);
   }
 
   //users router

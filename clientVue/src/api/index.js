@@ -117,7 +117,8 @@ const loginUser = (object) => post(`http://localhost:3000/api/user/login`, objec
 const postFile = (object, token) => file("http://localhost:3000/api/photos", object, token)
 const editProfile = (object, token) => patchToken(`http://localhost:3000/api/profile`, object, token)
 const getUser = (email,token) => postToken("http://localhost:3000/api/user/current", email, token);
+const getTagsArr = () => get(`http://localhost:3000/api/tags/raw`)
 
 
 
-export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser };
+export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser, getTagsArr };

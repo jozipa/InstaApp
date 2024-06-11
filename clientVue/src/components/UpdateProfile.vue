@@ -40,7 +40,6 @@ export default {
             setTimeout(() => {
                 this.$store.dispatch("GET_CURRENT_USER", { email: this.user.userInfo.email, token: this.user.token });
                 let obj = this.$store.getters.GET_PROFILE_LIST
-                console.log('objekciqqqqqqqqqqqq',obj);
                 this.info = obj.info;
                 this.show = true;
                 if(obj.type == 'success'){
