@@ -12,7 +12,7 @@
 
             <template #end>
                 <div class="flex align-items-center gap-2">
-                    <RouterLink to="/logout"><Button>Logout</Button></RouterLink>
+                    <RouterLink to="/logout"><Button @click="logout">Logout</Button></RouterLink>
                     <Avatar image="" style="width: 32px; height: 32px" />
                 </div>
             </template>
@@ -22,6 +22,10 @@
 
 <script>
 export default{
-
+    methods: {
+        logout(){
+            this.$store.getters.DELETE_LOGIN_LIST;
+        }
+    }
 }
 </script>

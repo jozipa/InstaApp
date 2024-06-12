@@ -35,6 +35,9 @@ const login = {
         GET_LOGIN_LIST(state) {
             return state.loginInfo;
         },
+        DELETE_LOGIN_LIST(state) {
+            state.loginInfo = [];
+        },
         GET_LOGIN_LOADING(state) {
             return state.loginLoading;
         },
