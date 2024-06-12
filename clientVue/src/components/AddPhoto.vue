@@ -52,6 +52,7 @@ export default {
             }
             let obj = {id: this.id, tags: arr}
             let dupa = patchTags(obj)
+            this.closeDialog()
         }
     },
     created() {
@@ -79,10 +80,15 @@ export default {
 </script>
 
 <template>
+    <AppLoader v-show="getLoading"></AppLoader>
     <Dialog :visible.sync="visible2" modal :header="header"  :style="{ width: '25rem' }">
-        <AppLoader v-show="getLoading"></AppLoader>
-        <FileUpload  class="mb-2" v-show="!show" style="margin-left: 33%" ref="fileUpload" mode="basic" name="demo[]" url="/api/upload" accept="image/*" customUpload @uploader="upload" @change="handleFileUpload"/>
-        <MultiSelect v-show="show" v-model="tags" :options="getTags" filter placeholder="Select Tags" class="w-full md:w-20rem mb-2" />
+        <div style="width: 100%; display: flex;justify-content: center; align-items: center;">
+            <div>
+                <FileUpload  class="mb-2" v-show="!show" ref="fileUpload" mode="basic" name="demo[]" url="/api/upload" accept="image/*" customUpload @uploader="upload" @change="handleFileUpload"/>
+                <MultiSelect v-show="show" v-model="tags" :options="getTags" filter placeholder="Select Tags" class="w-full md:w-20rem mb-2" />
+            </div>
+        </div>
+        
         <Button label="Cancel" text severity="danger" @click="closeDialog" autofocus />
         <Button v-show="show" label="Save" outlined severity="success" @click="saveChanges" autofocus />
     </Dialog>

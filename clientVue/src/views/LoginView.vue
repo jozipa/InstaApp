@@ -42,6 +42,7 @@ export default {
 </script>
 
 <template>
+    <div class="container">
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
             <div class="text-900 text-3xl font-medium mb-3">Welcome Back</div>
@@ -71,8 +72,14 @@ export default {
             <Button @click="onSubmit" :disabled="disabled" label="Sign In" icon="pi pi-user" class="w-full"></Button>
         </div>
     </div>
+</div>
 </template>
 
 <style>
-
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 </style>
