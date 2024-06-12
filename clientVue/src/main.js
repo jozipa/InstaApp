@@ -24,6 +24,7 @@ import Avatar from "primevue/avatar";
 import Image from "primevue/image";
 import Dialog from 'primevue/dialog';
 import MultiSelect from 'primevue/multiselect';
+import ProgressSpinner from 'primevue/progressspinner';
 
 const app = createApp(App);
 
@@ -40,6 +41,7 @@ app.component("Avatar", Avatar)
 app.component("Image", Image)
 app.component("Dialog", Dialog)
 app.component("MultiSelect", MultiSelect)
+app.component("ProgressSpinner", ProgressSpinner)
 
 
 

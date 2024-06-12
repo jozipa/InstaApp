@@ -4,6 +4,7 @@ const upload = {
     //state
     state() {
         return {
+            uploadInfo: [],
             uploadLoading: false,
             uploadError: null,
         };
@@ -11,6 +12,9 @@ const upload = {
 
     //mutations czyli setters
     mutations: {
+        SET_UPLOAD_INFO(state, newupload) {
+            state.uploadInfo = newupload
+        },
         SET_UPLOAD_LOADING(state, newupload) {
             state.uploadLoading = newupload;
         },
@@ -21,6 +25,12 @@ const upload = {
 
     //getters
     getters: {
+        RESET_UPLOAD_INFO(state, newupload) {
+            state.uploadInfo = [];
+        },
+        GET_UPLOAD_INFO(state) {
+            return state.uploadInfo
+        },
         GET_UPLOAD_LOADING(state) {
             return state.uploadLoading;
         },
@@ -40,8 +50,10 @@ const upload = {
             // odbiera dane z serwera (poprzez axios) i ustawia listę promocji w store
             // w razie błędu ustawia error w store (catch)
             // niezależnie od błędu lub jego braku (finally), kończy loading
-            console.log('postimage store' ,obj.file, obj.token);
             postFile(obj.file, obj.token)
+                .then((data) => {
+                    commit("SET_UPLOAD_INFO", data);
+                })
                 .catch((error) => {
                     commit("SET_UPLOAD_ERROR", "server error!!!");
                 })

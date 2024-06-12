@@ -18,7 +18,7 @@ const jsonController = {
       tags: [],
     };
     photosArray.push(photo);
-    console.log("plik dodany");
+    return photo
   },
   getOne: (id) => {
     let wanted = photosArray.find((element) => element.id == id);

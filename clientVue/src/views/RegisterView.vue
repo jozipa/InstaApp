@@ -49,7 +49,7 @@ export default {
 </script>
 
 <template>
-
+<div class="container">
     
     <div class="surface-card p-4 shadow-2 border-round w-full lg:w-6">
         <div class="text-center mb-5">
@@ -94,9 +94,16 @@ export default {
 
         </div>
     </div>
+</div>
 </template>
 
 <style>
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 #message13 {
     text-wrap: wrap;
 }

@@ -88,11 +88,27 @@ const post = async (url, object) => {
   })
 }
 
+const patch = async (url, object) => {
+
+  return new Promise(async (resolve, reject) => {
+
+    setTimeout(async () => {
+      try {
+        const response = await axios.patch(url, object)
+        console.log("axios", response.data);
+        resolve(response.data)
+      } catch (err) {
+        reject(err)
+      }
+
+    }, 1000);
+  })
+}
+
 
 const file = async (url, fd, data) => {
 
   return new Promise(async (resolve, reject) => {
-    console.log('filePOst', data);
     setTimeout(async () => {
       try {
         const response = await axios.post(url, fd, { headers: { 'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${data}` }
@@ -118,7 +134,8 @@ const postFile = (object, token) => file("http://localhost:3000/api/photos", obj
 const editProfile = (object, token) => patchToken(`http://localhost:3000/api/profile`, object, token)
 const getUser = (email,token) => postToken("http://localhost:3000/api/user/current", email, token);
 const getTagsArr = () => get(`http://localhost:3000/api/tags/raw`)
+const patchTags = (object) => patch(`http://localhost:3000/api/photos/tags`, object)
 
 
 
-export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser, getTagsArr };
+export { getPhotos, deletePhotos, registerUser, loginUser, postFile, editProfile, getUser, getTagsArr, patchTags };

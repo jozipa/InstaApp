@@ -37,7 +37,9 @@ const imageRouter = async (request, response) => {
     case "POST":
       if (request.url == "/api/photos") {
         let fileinfo = await fileController.addFile(request);
-        jsonController.add(fileinfo);
+        let wanted = jsonController.add(fileinfo);
+        response.writeHead(200, { "Content-Type": "text/plain;charset=utf-8" });
+        response.end(JSON.stringify(wanted));
       }
       break;
     case "PATCH":

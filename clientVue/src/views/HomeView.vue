@@ -66,8 +66,8 @@ export default{
                     <div class="card flex justify-content-center">
                         <Image v-bind:src="'http://localhost:3000/api/getimage/' + photo.id" alt="Image" width="100%" preview />
                     </div>
-                    <p class="mt-3">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quibusdam enim qui consequatur nemo reiciendis vitae itaque. Ex natus numquam praesentium voluptate ad est, debitis iste assumenda ducimus tenetur. Facere. 
+                    <p class="mt-3 flex flex-direction-row flex-wrap">
+                        <div v-for="element in photo.tags">{{element.name}}</div>
                     </p>
                 </template>
                 <template #footer>
